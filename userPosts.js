@@ -39,7 +39,41 @@ function displayUsers(userData) {
 fetchUsersJsonPlaceholder('users');
 
 async function selectPostsByUser(id) {
+  // highlight current user selected to signify which posts are being rendered
+  const clearPrevious = document.querySelector('.u-select');
+  if (clearPrevious) {
+    clearPrevious.classList.remove('u-select');
+  }
+  const uSelect = document.querySelector('.id' + id);
+  uSelect.classList.add('u-select');
+
   fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
   .then(response => response.json())
-  .then(test => console.log(test))
+  .then(json => displayPosts(json))
+}
+
+function displayPosts(userPosts) {
+  const clearPrevious = document.getElementById('user-posts');
+  if (clearPrevious) {
+    clearPrevious.remove();
+  }
+  let userContent = document.createElement('div');
+  userContent.setAttribute('id', 'user-posts');
+
+  html = '<table>';
+
+  userPosts.forEach((result) => {
+    var postTitle = result.title;
+    var postContent = result.body;
+    
+    html += '<tr class="post"><td><span class="title">' + postTitle + '</span>';
+    html += '<br>';
+    html += '<span class="content">' + postContent + '</span></td></tr>';
+  });
+
+  html += '</table>';
+  userContent.innerHTML = html;
+
+  let displayPosts = document.querySelector('.display-posts');
+  displayPosts.appendChild(userContent);
 }

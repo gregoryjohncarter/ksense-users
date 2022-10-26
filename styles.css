@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-td {
+.u td {
   padding: 15px;
 }
 
@@ -29,7 +29,6 @@ td {
 }
 
 /* highlighted to display posts by single user */
-.u-select {
+.u-select td {
   border: 4px solid #4040bb;
 }
-
