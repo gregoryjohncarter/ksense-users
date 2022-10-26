@@ -39,7 +39,7 @@ function displayUsers(userData) {
 fetchUsersJsonPlaceholder('users');
 
 async function selectPostsByUser(id) {
-    fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
-    .then(response => response.json())
-    .then(test => console.log(test))
+  fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
+  .then(response => response.json())
+  .then(test => console.log(test))
 }
