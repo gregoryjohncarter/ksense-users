@@ -1,4 +1,12 @@
-/* section 1 (users */
+:root {
+  --light-oj: #f6ac52;
+}
+
+body {
+  background-color:darkorange;
+}
+
+/* >> section 1 (users) */
 .user-select {
   display: flex;
 }
@@ -18,17 +26,40 @@
   padding: 15px;
 }
 
-/* --username field */
+/* -username field */
 .user {
   color: #efefef;
 }
 
-/* --email field */
+/* -email field */
 .email {
   color: #6c9cd7;
 }
 
-/* highlighted to display posts by single user */
+/* highlight to display posts by single user */
 .u-select td {
-  border: 4px solid #4040bb;
+  border: 4px solid var(--light-oj);
+}
+
+/* >> section 2 (posts) */
+.display-posts {
+  margin-top: 20px;
+}
+
+/* -title field */
+.title {
+  font-size: 20px;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  display: block;
+  margin-top: 10px;
+  margin-left: 5px;
+  text-decoration: underline;
+  text-decoration-color: var(--light-oj);
+}
+
+/* -content field */
+.content {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  margin-left: 5px;
 }

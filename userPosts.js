@@ -38,6 +38,8 @@ function displayUsers(userData) {
 
 fetchUsersJsonPlaceholder('users');
 
+var currentUserId = null;
+
 async function selectPostsByUser(id) {
   // highlight current user selected to signify which posts are being rendered
   const clearPrevious = document.querySelector('.u-select');
@@ -47,6 +49,13 @@ async function selectPostsByUser(id) {
   const uSelect = document.querySelector('.id' + id);
   uSelect.classList.add('u-select');
 
+  // prevent redundant clicks
+  if (currentUserId === id) {
+    return;
+  }
+
+  currentUserId = id;
+
   fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
   .then(response => response.json())
   .then(json => displayPosts(json))
@@ -54,9 +63,11 @@ async function selectPostsByUser(id) {
 
 function displayPosts(userPosts) {
   const clearPrevious = document.getElementById('user-posts');
+
   if (clearPrevious) {
     clearPrevious.remove();
   }
+  
   let userContent = document.createElement('div');
   userContent.setAttribute('id', 'user-posts');
 
